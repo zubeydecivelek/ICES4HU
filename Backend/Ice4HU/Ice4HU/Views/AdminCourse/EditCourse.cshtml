@@ -1,0 +1,30 @@
+﻿
+@model EntityLayer.Concrete.Course
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Edit Course Page</h2>
+
+@using (Html.BeginForm("EditCourse", "AdminCourse", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Course Code")
+        @Html.TextBoxFor(x => x.CourseCode)
+        <br /> <br />
+        @Html.Label("Course Name")
+        @Html.TextAreaFor(x => x.CourseName)
+        <br /> <br />
+        @Html.Label("Credit")
+        @Html.TextBoxFor(x => x.Credit)
+        <br /> <br />
+        @Html.Label("Course Type")
+        @Html.TextBoxFor(x => x.CourseType)
+        <br /> <br />
+        <button class="alert-success">Save</button>
+    </div>
+}
+
+

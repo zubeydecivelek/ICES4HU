@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" class="form-control" name="Email" placeholder="Enter Your Email" required>
+                </th>
+            </tr>
+            <tr>
+                <th>Password</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="password" class="form-control" name="Password" placeholder="***********" required>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn form-control btn-primary img-rounded submit px-3">
+            Sign In
+        </button>
+    </div>
+}
+
+<a href="/UserEnrollmentRequest/Index" class="btn btn-danger">Sign Up</a>

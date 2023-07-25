@@ -1,0 +1,46 @@
+﻿@using Ice4HU.Models
+@model List<Survey_>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Survey List</h2>
+
+
+@using (Html.BeginForm("DeleteSurvey", "Survey", FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Survey ID</th>
+            <th>Course Code</th>
+            <th>Course Name</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (@item != null)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="selectedSurveys" value="@item.SurveyId" />
+                    </td>
+                    <td>@item.SurveyId</td>
+                    <td>@item.CourseCode</td>
+
+                    <td><a href="/Question/ListSurveyQuestion/@item.SurveyId" class="btn btn-warning">Edit Survey</a></td>
+                    <td><a href="/Question/CourseSurvey/@item.CourseCode" class="btn btn-success">Fill Survey</a></td>
+
+
+                </tr>
+            }
+
+        }
+    </table>
+    <input type="submit" value="Delete Selected Surveys" class="btn btn-danger" />
+}
+<a href="/Survey/AddNewSurvey/" class="btn btn-danger">Add Survey</a>

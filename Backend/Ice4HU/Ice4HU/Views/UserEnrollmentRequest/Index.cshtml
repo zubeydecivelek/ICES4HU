@@ -1,0 +1,64 @@
+﻿@using EntityLayer.Concrete
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Enroll</h2>
+
+@using (Html.BeginForm("EnrollmentRequestSend", "UserEnrollmentRequest", FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" class="form-control" name="Name" placeholder="Enter Your Name" required>
+                </th>
+            </tr>
+            <tr>
+                <th>Surname</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" class="form-control" name="Surname" placeholder="Enter Your Surname" required>
+                </th>
+            </tr>
+            <tr>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" class="form-control" name="Email" placeholder="Enter Your Email" required>
+                </th>
+            </tr>
+            <tr>
+                <th>Password</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="password" class="form-control" name="Password" placeholder="***********" required>
+                </th>
+            </tr>
+            <tr>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" class="form-control" name="UserType" placeholder="Enter Your User Role" required>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn form-control btn-primary img-rounded submit px-3">
+            Enroll
+        </button>
+    </div>
+}

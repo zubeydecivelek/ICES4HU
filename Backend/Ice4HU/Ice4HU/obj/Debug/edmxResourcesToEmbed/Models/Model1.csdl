@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbICE4HUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course_">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourseName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Credit" Type="Int32" Nullable="false" />
+    <Property Name="CourseType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CourseCourse" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourseName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Credit" Type="Int32" Nullable="false" />
+    <Property Name="CourseType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Survey_" Relationship="Self.FK_Survey__Courses" FromRole="Courses" ToRole="Survey_" />
+  </EntityType>
+  <EntityType Name="Questions_">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionPoint" Type="Int32" />
+    <Property Name="QuestionText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SurveyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Survey_" Relationship="Self.FK_Questions__Survey_" FromRole="Questions_" ToRole="Survey_" />
+  </EntityType>
+  <EntityType Name="Survey_">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Name="SurveyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Survey__Courses" FromRole="Survey_" ToRole="Courses" />
+    <NavigationProperty Name="Questions_" Relationship="Self.FK_Questions__Survey_" FromRole="Survey_" ToRole="Questions_" />
+  </EntityType>
+  <EntityType Name="Surveys">
+    <Key>
+      <PropertyRef Name="SurveyID" />
+    </Key>
+    <Property Name="SurveyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Survey__Courses">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+    <End Role="Survey_" Type="Self.Survey_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseCode" />
+      </Principal>
+      <Dependent Role="Survey_">
+        <PropertyRef Name="CourseCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions__Survey_">
+    <End Role="Survey_" Type="Self.Survey_" Multiplicity="1" />
+    <End Role="Questions_" Type="Self.Questions_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey_">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="Questions_">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbICE4HUEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Course_" EntityType="Self.Course_" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" />
+    <EntitySet Name="Questions_" EntityType="Self.Questions_" />
+    <EntitySet Name="Survey_" EntityType="Self.Survey_" />
+    <EntitySet Name="Surveys" EntityType="Self.Surveys" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Survey__Courses" Association="Self.FK_Survey__Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Survey_" EntitySet="Survey_" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions__Survey_" Association="Self.FK_Questions__Survey_">
+      <End Role="Survey_" EntitySet="Survey_" />
+      <End Role="Questions_" EntitySet="Questions_" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

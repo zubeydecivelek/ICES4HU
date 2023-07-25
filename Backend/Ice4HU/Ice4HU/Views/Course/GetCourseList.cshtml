@@ -1,0 +1,35 @@
+
+@using EntityLayer.Concrete
+@model List<Course>
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Course List</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th></th>
+        <th>Course Code</th>
+        <th>Course Name</th>
+        <th>Credit</th>
+        <th>Course Type</th>
+
+    </tr>
+    @foreach(var item in Model){
+        <tr>
+            <td class="checkbox-inline"></td>
+            <td>@item.CourseCode</td>
+            <td>@item.CourseName</td>
+            <td>@item.Credit</td>
+            <td>@item.CourseType</td>
+        </tr>
+    }
+
+
+</table>
+<a href="/Course/AddCourse" class="btn-danger"> Add Course </a>
+<button class="btn-default"> Delete Selected Course  </button>

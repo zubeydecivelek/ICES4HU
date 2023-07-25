@@ -1,0 +1,38 @@
+﻿@using EntityLayer.Concrete
+@model List<User>
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>User List</h2>
+
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>LoginID</th>
+                <th>User Name</th>
+                <th>User Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.LoginID</td>
+                    <td>@user.Name @user.Surname</td>
+                    <td>@user.UserType</td>
+                    <td>
+                        @Html.ActionLink("Delete",  "DeleteUser", "User", new { @LoginID = user.LoginID }, null)
+                        @Html.ActionLink("Update",  "EditUser", "User", new { @LoginID = user.LoginID }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+  </table>
+<a href="/User/AddInstructor" class="btn btn-danger">Add Instructor</a>
+
+<a href="/AdminEnrollmentRequest/EnrollmentRequestGetList" class="btn btn-danger">Enrollment Requests</a>

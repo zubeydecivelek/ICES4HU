@@ -1,0 +1,42 @@
+﻿@using Ice4HU.Models
+@model List<Questions_>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Fill The Survey</h2>
+
+
+@using (Html.BeginForm("FillSurveys", "Question", FormMethod.Post))
+{
+    
+    foreach (var item in Model)
+    {
+        <h4>@item.QuestionText</h4>
+        <label>
+            <input type="checkbox" name="@item.Answer" value="1" /> Very Bad
+        </label>
+        <br />
+        <label>
+            <input type="checkbox" name="@item.Answer" value="2" /> Bad
+        </label>
+        <br />
+        <label>
+            <input type="checkbox" name="@item.Answer" value="3" /> Average
+        </label>
+        <br />
+        <label>
+            <input type="checkbox" name="@item.Answer" value="4" /> Good
+        </label>
+        <br />
+        <label>
+            <input type="checkbox" name="@item.Answer" value="5" /> Very Good
+        </label>
+        <br />
+        <hr />
+    }
+    
+    <input type="submit" value="Submit" />
+}

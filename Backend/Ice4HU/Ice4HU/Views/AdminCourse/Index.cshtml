@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model List<Course>
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Course List</h2>
+
+@using (Html.BeginForm("DeleteCourse", "AdminCourse", FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Credit</th>
+            <th>Course Type</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" name="selectedCourses" value="@item.CourseCode" />
+                </td>
+                <td>
+                    <a href="/AdminCourse/EditCourse" class="course-link">@item.CourseCode</a>
+                </td>
+                <td>@item.CourseName</td>
+                <td>@item.Credit</td>
+                <td>@item.CourseType</td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Delete Selected Courses" class="btn btn-danger" />
+}
+
+<a href="/AdminCourse/AddCourse" class="btn btn-danger">Add Course</a>
+
+<a href="/User/Index" class="btn btn-danger">See Users</a>

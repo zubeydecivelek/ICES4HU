@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Edit User Page</h2>
+
+@using (Html.BeginForm("EditUser", "User", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("User Name")
+        @Html.TextBoxFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
+        <br /> <br />
+        @Html.Label("User Surname")
+        @Html.TextBoxFor(x => x.Surname)
+        @Html.ValidationMessageFor(x => x.Surname)
+        <br /> <br />
+        @Html.Label("User Email")
+        @Html.TextBoxFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+        <br /> <br />
+        @Html.Label("User Password")
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Password)
+        <br /> <br />
+        <button class="alert-success">Save</button>
+    </div>
+}

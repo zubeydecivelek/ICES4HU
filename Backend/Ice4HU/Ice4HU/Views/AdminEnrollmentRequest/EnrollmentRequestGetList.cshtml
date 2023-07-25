@@ -1,0 +1,38 @@
+﻿@using EntityLayer.Concrete
+@model List<EnrollmentRequest>
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Pending Enrollment Requests</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Approve</th>
+            <th>Reject</th>
+            <th>User Name</th>
+            <th>Role</th>
+            <th>E-mail</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink("Reject User", "RejectEnrollmentRequest", "AdminEnrollmentRequest", new { LoginID = user.LoginID }, null)</td>
+                    <td>@Html.ActionLink("Approve User", "ApproveEnrollmentRequest", "AdminEnrollmentRequest", new { LoginID = user.LoginID }, null)</td>
+                    <td>@user.Name @user.Surname</td>
+                    <td>@user.UserType</td>
+                    <td>@user.Email</td>
+                    <td>@user.Password</td>
+                </tr>
+            }
+    </tbody>
+</table>
+
+<a href="/User/Index" class="btn btn-danger">Back to User List</a>

@@ -1,0 +1,48 @@
+﻿@using Ice4HU.Models
+@model List<Questions_>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Questions</h2>
+
+
+@using (Html.BeginForm("DeleteQuestion", "Question", FormMethod.Post))
+{
+    
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Question ID</th>
+            <th>Question Point</th>
+            <th>Question Text</th>
+            <th>Survey Id</th>
+            <th>Course Code</th>
+
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                int id = item.SurveyId;
+                <tr>
+                    <td>
+                        <input type="checkbox" name="selectedQuestions" value="@item.QuestionId" />
+                    </td>
+                    <td>@item.QuestionId</td>
+                    <td>@item.QuestionPoint</td>
+                    <td>@item.QuestionText</td>
+                    <td>@item.SurveyId</td>
+                    <td>@item.Survey_.CourseCode</td>
+
+                </tr>
+            }
+        }
+
+
+    </table>
+    <input type="submit" value="Delete Selected Question" class="btn btn-danger" />
+}
+<a href="/Question/AddNewQuestion/" class="btn btn-danger">Add Question</a>

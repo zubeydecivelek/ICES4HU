@@ -1,0 +1,25 @@
+﻿@model Ice4HU.Models.Questions_
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Add Question Page</h2>
+
+@using (Html.BeginForm("AddNewQuestion", "Question", FormMethod.Post))
+{
+<div class="form-group">
+
+    <br /> <br />
+    @Html.Label("Question")
+    @Html.TextAreaFor(x => x.QuestionText, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.QuestionText)
+    <br /> <br />
+    @Html.Label("Survey Id")
+    @Html.TextAreaFor(x => x.SurveyId, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.SurveyId)
+    <br /> <br />
+    <button class="alert-success">Save</button>
+</div>
+}

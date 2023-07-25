@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbICE4HUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Course_">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="CourseType" Type="nvarchar" MaxLength="500" />
+    <Property Name="CourseCourse" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="CourseType" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Questions_">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionPoint" Type="int" />
+    <Property Name="QuestionText" Type="text" />
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Survey_">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Name="SurveyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Surveys">
+    <Key>
+      <PropertyRef Name="SurveyID" />
+    </Key>
+    <Property Name="SurveyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Questions__Survey_">
+    <End Role="Survey_" Type="Self.Survey_" Multiplicity="1" />
+    <End Role="Questions_" Type="Self.Questions_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey_">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="Questions_">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey__Courses">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+    <End Role="Survey_" Type="Self.Survey_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseCode" />
+      </Principal>
+      <Dependent Role="Survey_">
+        <PropertyRef Name="CourseCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbICE4HUModelStoreContainer">
+    <EntitySet Name="Course_" EntityType="Self.Course_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions_" EntityType="Self.Questions_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Survey_" EntityType="Self.Survey_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Questions__Survey_" Association="Self.FK_Questions__Survey_">
+      <End Role="Survey_" EntitySet="Survey_" />
+      <End Role="Questions_" EntitySet="Questions_" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey__Courses" Association="Self.FK_Survey__Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Survey_" EntitySet="Survey_" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

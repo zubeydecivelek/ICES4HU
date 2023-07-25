@@ -1,0 +1,21 @@
+﻿@model Ice4HU.Models.Survey_
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Add Survey Page</h2>
+
+@using (Html.BeginForm("AddNewSurvey", "Survey", FormMethod.Post))
+{
+<div class="form-group">
+   
+    <br /> <br />
+    @Html.Label("Course Code")
+    @Html.TextAreaFor(x => x.CourseCode, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CourseCode)
+    <br /> <br />
+    <button class="alert-success">Save</button>
+</div>
+}

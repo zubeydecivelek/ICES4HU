@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Instructor
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Add Instructor Page</h2>
+
+@using (Html.BeginForm("AddInstructor", "User", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Instructor Name")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name)
+        <br /> <br />
+        @Html.Label("Instructor Surname")
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Surname)
+        <br /> <br />
+        @Html.Label("Instructor Password")
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Password)
+        <br /> <br />
+        @Html.Label("Instructor Email")
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email)
+        <br /> <br />
+
+        <button class="alert-success">Save</button>
+    </div>
+}

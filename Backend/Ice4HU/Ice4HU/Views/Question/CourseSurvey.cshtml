@@ -1,0 +1,33 @@
+﻿@using Ice4HU.Models
+@model List<Survey_>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>The Course's Surveys</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th></th>
+        <th>Survey ID</th>
+        <th>Course Code</th>
+        <th>Course Name</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SurveyId</td>            
+            <td>@item.CourseCode</td>
+            <td>@item.Courses.CourseName</td>
+            <td><a href="/Question/FillSurveys/@item.SurveyId" class="btn btn-success">Fill Survey</a></td>
+            
+           
+        </tr>
+    }
+
+
+</table>

@@ -1,0 +1,298 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App{
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  background-color: #f2f2f2;
+}
+
+
+img{
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 50%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.optionNotification{
+  margin-right: 55px;
+}
+
+.optionMessages{
+  border: none;
+  margin-right: 55px;
+}
+
+.optionNotification:hover,
+.optionMessages:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.profile-button {
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-menu.open {
+  display: block;
+}
+
+.profile-menu-option {
+  cursor: pointer;
+}
+
+.profile-menu-option:hover {
+  color: white;
+  background-color: #007bff;
+}
+
+.numNotification {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 4px;
+  font-size: 10px;
+  position: relative;
+  top: -8px;
+  left: -8px;
+}
+
+.numMessages {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 4px;
+  font-size: 10px;
+  position: relative;
+  top: -8px;
+  left: -8px;
+}
+
+.profile-menu-messages {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 36px;
+  margin-right: 176px;
+}
+
+.profile-menu-messages h2 {
+  font-size: 15px;
+}
+
+.profile-menu-messages.open {
+  display: block;
+}
+
+.profile-menu-notifications{
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 36px;
+  margin-right: 306px;
+}
+
+.profile-menu-notifications h2 {
+  font-size: 15px;
+}
+
+.profile-menu-notifications.open {
+  display: block;
+}
+
+.message-box {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  color: #999;
+  opacity: 0.6;
+}
+
+.message-box:hover {
+  opacity: 1;
+  background-color: #ecdaf2;
+}
+
+.message-box::after {
+  content: "";
+  flex-grow: 1;
+  border-bottom: none; /* Altı çizili çizgiyi kaldırma */
+  margin-left: 10px;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.MessageCloseButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.MessageCloseButton:hover {
+  background-color: #007bff;
+  color: black;
+}
+
+.notification-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  color: #999;
+  opacity: 0.6;
+}
+
+.notification-button:hover {
+  opacity: 1;
+  background-color: #ecdaf2;
+}
+
+.notification-button::after {
+  content: "";
+  flex-grow: 1;
+  border-bottom: none; 
+  margin-left: 10px;
+}
+
+.NotificationCloseButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.NotificationCloseButton:hover {
+  background-color: #007bff;
+  color: black;
+}
+
+/* ---------------------------------------------------------- */
+  
+.sidebar {
+    margin-top: 15px;
+    background-color: #212429;
+    width: 200px;
+    color: white;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+    
+  }
+  
+  .sidebar-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: black;
+    color: #737376;
+    text-decoration: none;
+  }
+  
+  .sidebar-button:hover {
+    color: white;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+
+  /* ******* */
+
+  .manage-course-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .user-list-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
